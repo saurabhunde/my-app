@@ -6,11 +6,11 @@ templateUrl:'./server.component.html'
 })
 
 export class ServerComponent {
-serverId:number = 10;
-serverStatus:string ='offline';
+serverCreateStatus = 'No server created yet';
+serverName = '';
 allowNewServer = false;
 getServerStatus(){
-    return this.serverStatus;
+    return this.serverCreateStatus;
 };
 constructor(){
 setTimeout(() => {
@@ -18,4 +18,10 @@ setTimeout(() => {
 },2000);
 };
 
+onServerCreate(){
+this.serverCreateStatus = 'server was created = ' + this.serverName;
+}
+onUpdateServerName(event: any){
+    this.serverName = event.target.value;
+};
 }
